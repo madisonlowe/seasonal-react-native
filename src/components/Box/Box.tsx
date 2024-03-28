@@ -14,8 +14,8 @@ const Box = ({ children }: BoxProps) => {
 
 const styles = StyleSheet.create({
   box: {
-    height: 100,
-    width: 100,
+    height: 300,
+    width: 300,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "lightgray",

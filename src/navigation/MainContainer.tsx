@@ -1,9 +1,15 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import HomeScreen from "navigation/screens/HomeScreen/HomeScreen";
-import AboutScreen from "navigation/screens/AboutScreen/AboutScreen";
-import { RootStackParamList } from "router";
+import HomeScreen from "src/navigation/screens/HomeScreen/HomeScreen";
+import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
+import { RootStackParamList } from "src/router";
+
+import {
+  GestureDetector,
+  Gesture,
+  GestureHandlerRootView,
+} from "react-native-gesture-handler";
 
 // RootStackParamList which contains all information about our routes.
 // We use together with NativeStackScreenProps to define route Props
