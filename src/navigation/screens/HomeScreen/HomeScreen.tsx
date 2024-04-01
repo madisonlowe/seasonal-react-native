@@ -50,7 +50,8 @@ export default function HomeScreen({ navigation }: properties) {
       pinchGestureEnabled={true}
       showsVerticalScrollIndicator={true}
     >
-      <Text>hi i'm the HOME screen component</Text>
+      <Text>It's {timeStamp}!</Text>
+      <Text>Some things in season...</Text>
       {/* <StatusBar barStyle="dark-content" /> */}
 
       {randomArray && (
@@ -62,6 +63,11 @@ export default function HomeScreen({ navigation }: properties) {
           ))}
         </View>
       )}
+
+      <Button
+        title="More in Season"
+        onPress={() => console.log("clicking more in season")}
+      />
       {/* <Button title="About" onPress={() => navigation.navigate("About")} />
       <Button
         title="First Item"
@@ -72,26 +78,6 @@ export default function HomeScreen({ navigation }: properties) {
             stock: 1,
           })
         }
-      />
-      <Button
-        title="Second Item"
-        onPress={() =>
-          navigation.navigate("Details", {
-            title: "Second Item",
-            content: "Second Item Content",
-            stock: 1,
-          })
-        }
-      />
-      <Button
-        title="Third Item"
-        onPress={() =>
-          navigation.navigate("Details", {
-            title: "Third Item",
-            content: "Third Item Content",
-            stock: 1,
-          })
-        }
       /> */}
     </ScrollView>
   );
@@ -99,6 +85,7 @@ export default function HomeScreen({ navigation }: properties) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     ...Platform.select({
@@ -115,3 +102,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+/*
+TO DO:
+
+- add default button
+- add more in season button
+- style headings
+- google accessibility on mobile
+*/
