@@ -11,16 +11,21 @@ import { RootStackParamList } from "src/router";
 
 interface IngredientCardProps {
   children: string;
+  imageUrl: string;
 }
 
 type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
-export default function IngredientCard({ children }: IngredientCardProps) {
+export default function IngredientCard({
+  children,
+  imageUrl,
+}: IngredientCardProps) {
   return (
     <Pressable onPress={() => console.log("click")} style={styles.card}>
       <Image
         style={styles.image}
-        source={require("assets/emergencyJpeg.jpg")}
+        source={{ uri: imageUrl }}
+        resizeMode="contain"
       />
       <View style={styles.textContainer}>
         <Text style={styles.text}>{children}</Text>
@@ -37,10 +42,10 @@ const deviceWidth = Math.round(Dimensions.get("window").width);
 
 const styles = StyleSheet.create({
   card: {
-    height: deviceWidth - 150,
-    width: deviceWidth - 100,
+    height: 300,
+    width: 300,
     alignItems: "center",
-    backgroundColor: "#296243",
+    backgroundColor: "#fff",
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "#296243",
@@ -50,16 +55,19 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   image: {
-    width: deviceWidth - 102,
-    height: 100,
+    width: 298,
+    margin: 20,
     borderRadius: 4,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     flex: 3,
+    backgroundColor: "#fff",
   },
   textContainer: {
     flex: 1,
+    width: 298,
     justifyContent: "center",
+    backgroundColor: "#296243",
   },
   text: {
     alignSelf: "center",

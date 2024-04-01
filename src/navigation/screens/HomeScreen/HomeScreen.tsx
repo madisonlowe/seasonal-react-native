@@ -16,35 +16,34 @@ type properties = NativeStackScreenProps<RootStackParamList>;
 
 const cards = new Array(5).fill(null).map((v, i) => i + 1);
 
-const [randomArray, setRandomArray] = useState({ payload: [] });
-
-const [timeStamp, setTimeStamp] = useState("");
-
 const fetchString =
   "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
 
-const fetchData = async () => {
-  const data = await fetch(`${fetchString}?month=${timeStamp}`);
-  let result = await data.json();
-  setRandomArray(result);
-};
-
-function getMonth() {
-  const today = new Date();
-  let longMonth = today.toLocaleString("default", { month: "long" });
-  setTimeStamp(longMonth);
-}
-
-useEffect(() => {
-  getMonth();
-}, []);
-
-useEffect(() => {
-  if (timeStamp === "") return;
-  fetchData();
-}, [timeStamp]);
-
 export default function HomeScreen({ navigation }: properties) {
+  const [randomArray, setRandomArray] = useState<any[]>([]);
+  const [timeStamp, setTimeStamp] = useState("");
+
+  const fetchData = async () => {
+    const data = await fetch(`${fetchString}?month=${timeStamp}`);
+    let result = await data.json();
+    setRandomArray(result.payload);
+  };
+
+  function getMonth() {
+    const today = new Date();
+    let longMonth = today.toLocaleString("default", { month: "long" });
+    setTimeStamp(longMonth);
+  }
+
+  useEffect(() => {
+    getMonth();
+  }, []);
+
+  useEffect(() => {
+    if (timeStamp === "") return;
+    fetchData();
+  }, [timeStamp]);
+
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -54,13 +53,15 @@ export default function HomeScreen({ navigation }: properties) {
       <Text>hi i'm the HOME screen component</Text>
       {/* <StatusBar barStyle="dark-content" /> */}
 
-      <View style={styles.cards}>
-        {randomArray.payload.map((result) => (
-          <IngredientCard key={result}>
-            {result.name.toLocaleString()}
-          </IngredientCard>
-        ))}
-      </View>
+      {randomArray && (
+        <View style={styles.cards}>
+          {randomArray.map((ingredient) => (
+            <IngredientCard key={ingredient.id} imageUrl={ingredient.imageurl}>
+              {ingredient.name}
+            </IngredientCard>
+          ))}
+        </View>
+      )}
       {/* <Button title="About" onPress={() => navigation.navigate("About")} />
       <Button
         title="First Item"
