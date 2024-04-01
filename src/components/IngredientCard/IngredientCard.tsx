@@ -25,7 +25,7 @@ export default function IngredientCard({
       <Image
         style={styles.image}
         source={{ uri: imageUrl }}
-        resizeMode="contain"
+        resizeMode="center"
       />
       <View style={styles.textContainer}>
         <Text style={styles.text}>{children}</Text>
@@ -34,11 +34,7 @@ export default function IngredientCard({
   );
 }
 
-// parent
-//   imagediv
-//   textdiv
-
-const deviceWidth = Math.round(Dimensions.get("window").width);
+//const deviceWidth = Math.round(Dimensions.get("window").width);
 
 const styles = StyleSheet.create({
   card: {
@@ -56,7 +52,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 298,
-    margin: 20,
+    //margin: 20,
     borderRadius: 4,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
@@ -76,6 +72,3 @@ const styles = StyleSheet.create({
     color: "#f2f2f2",
   },
 });
-
-// in react native, children don't inherit parent styling :vomit:
-// explains using styled components or a builder or smth ig
