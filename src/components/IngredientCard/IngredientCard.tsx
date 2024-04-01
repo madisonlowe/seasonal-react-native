@@ -12,6 +12,7 @@ import { RootStackParamList } from "src/router";
 interface IngredientCardProps {
   children: string;
   imageUrl: string;
+  onPress: () => void;
 }
 
 type Props = NativeStackScreenProps<RootStackParamList, "Details">;
@@ -19,9 +20,10 @@ type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 export default function IngredientCard({
   children,
   imageUrl,
+  onPress,
 }: IngredientCardProps) {
   return (
-    <Pressable onPress={() => console.log("click")} style={styles.card}>
+    <Pressable onPress={onPress} style={styles.card}>
       <Image
         style={styles.image}
         source={{ uri: imageUrl }}

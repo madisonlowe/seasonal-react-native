@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "src/navigation/screens/HomeScreen/HomeScreen";
 import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
+import SingleResultScreen from "./screens/SingleResultScreen/SingleResultScreen";
 import { RootStackParamList } from "src/router";
 
 import {
@@ -25,6 +26,13 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="About" component={AboutScreen} />
+        <Drawer.Screen
+          name="SingleResultScreen"
+          component={SingleResultScreen}
+          options={{
+            drawerItemStyle: { display: "none" },
+          }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );

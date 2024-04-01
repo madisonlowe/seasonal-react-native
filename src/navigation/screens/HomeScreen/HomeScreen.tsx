@@ -58,7 +58,15 @@ export default function HomeScreen({ navigation }: properties) {
       {randomArray && (
         <View style={styles.cards}>
           {randomArray.map((ingredient) => (
-            <IngredientCard key={ingredient.id} imageUrl={ingredient.imageurl}>
+            <IngredientCard
+              key={ingredient.id}
+              imageUrl={ingredient.imageurl}
+              onPress={() =>
+                navigation.navigate("SingleResultScreen", {
+                  ingredient: ingredient,
+                })
+              }
+            >
               {ingredient.name}
             </IngredientCard>
           ))}
@@ -73,10 +81,9 @@ export default function HomeScreen({ navigation }: properties) {
       <Button
         title="First Item"
         onPress={() =>
-          navigation.navigate("Details", {
-            title: "First Item",
-            content: "First Item Content",
-            stock: 1,
+          navigation.navigate("SingleResultScreen", {
+            title: ingredient.name,
+            ingredient: ingredient,
           })
         }
       /> */}

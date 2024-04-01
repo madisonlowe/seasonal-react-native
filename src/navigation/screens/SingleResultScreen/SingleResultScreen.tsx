@@ -2,12 +2,21 @@ import { Platform, StatusBar, StyleSheet, View, Text } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../router";
 
-type Props = NativeStackScreenProps<RootStackParamList>;
+interface SingleResultScreenProps {
+  ingredient: {
+    name: string;
+  };
+  navigation: NativeStackScreenProps<RootStackParamList>;
+}
 
-export default function SingleResultScreen() {
+export default function SingleResultScreen({
+  ingredient,
+  navigation,
+}: SingleResultScreenProps) {
   return (
     <View style={styles.container}>
       <Text>hi i'm the SINGLE RESULT screen component</Text>
+      <Text>{ingredient.name}</Text>
       <StatusBar barStyle="dark-content" />
     </View>
   );
