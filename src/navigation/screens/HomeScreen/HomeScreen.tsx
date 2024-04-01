@@ -4,13 +4,13 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
   ScrollView,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "src/router";
 import IngredientCard from "src/components/IngredientCard/IngredientCard";
 import { useEffect, useState } from "react";
+import Button from "src/components/Button/Button";
 
 type properties = NativeStackScreenProps<RootStackParamList>;
 
@@ -50,9 +50,10 @@ export default function HomeScreen({ navigation }: properties) {
       pinchGestureEnabled={true}
       showsVerticalScrollIndicator={true}
     >
-      <Text>It's {timeStamp}!</Text>
-      <Text>Some things in season...</Text>
-      {/* <StatusBar barStyle="dark-content" /> */}
+      <View style={styles.headingContainer}>
+        <Text style={styles.h1}>It's {timeStamp}!</Text>
+        <Text style={styles.bold}>Some things in season...</Text>
+      </View>
 
       {randomArray && (
         <View style={styles.cards}>
@@ -85,6 +86,7 @@ export default function HomeScreen({ navigation }: properties) {
 
 const styles = StyleSheet.create({
   container: {
+    paddingBottom: 60,
     backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
@@ -100,14 +102,28 @@ const styles = StyleSheet.create({
     backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
+    padding: 20,
+  },
+  headingContainer: {
+    paddingBottom: 10,
+  },
+  h1: {
+    fontWeight: "bold",
+    fontSize: 30,
+    textAlign: "center",
+  },
+  bold: {
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
 /*
 TO DO:
-
-- add default button
-- add more in season button
-- style headings
 - google accessibility on mobile
+- google ios and android crossovers
+- google styling norms - styled components or smth to get around no parent styling?
+
+- style the nav component and drawer
+- make the onPress move us to a new page (slug)
 */
