@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "src/router";
+import { Ingredient, RootStackParamList } from "src/router";
 import IngredientCard from "src/components/IngredientCard/IngredientCard";
 import { useEffect, useState } from "react";
 import Button from "src/components/Button/Button";
@@ -17,12 +17,17 @@ type properties = NativeStackScreenProps<RootStackParamList>;
 export default function HomeScreen({ navigation }: Readonly<properties>) {
   const [randomArray, setRandomArray] = useState<any[]>([]);
   const [timeStamp, setTimeStamp] = useState("");
+  const [inSeasonIngredients, setInSeasonIngredients] = useState<Ingredient[]>(
+    []
+  );
 
-  const fetchString =
+  const fetchRandomString =
     "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
 
+  const fetchMonthString = `https://drab-ruby-seahorse-veil.cyclic.app//produce?month=${timeStamp}`;
+
   const fetchData = async () => {
-    const data = await fetch(`${fetchString}?month=${timeStamp}`);
+    const data = await fetch(`${fetchRandomString}?month=${timeStamp}`);
     let result = await data.json();
     setRandomArray(result.payload);
   };
@@ -33,6 +38,12 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
     setTimeStamp(longMonth);
   }
 
+  async function getInSeasonIngredients() {
+    const data = await fetch(fetchMonthString);
+    let result = await data.json();
+    setInSeasonIngredients(result.payload);
+  }
+
   useEffect(() => {
     getMonth();
   }, []);
@@ -40,6 +51,7 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
   useEffect(() => {
     if (timeStamp === "") return;
     fetchData();
+    getInSeasonIngredients();
   }, [timeStamp]);
 
   return (
@@ -74,7 +86,11 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
 
       <Button
         title="More in Season"
-        onPress={() => console.log("clicking more in season")}
+        onPress={() =>
+          navigation.navigate("SearchResults", {
+            ingredients: inSeasonIngredients,
+          })
+        }
       />
     </ScrollView>
   );

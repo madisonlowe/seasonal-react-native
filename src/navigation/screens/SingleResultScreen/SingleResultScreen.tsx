@@ -34,7 +34,6 @@ export default function SingleResultScreen({
           />
         ))}
         <Button
-          key={ingredient.family}
           title={`Family: ${ingredient.allergens}`}
           onPress={() => {
             console.log("pill clicked");
@@ -42,7 +41,6 @@ export default function SingleResultScreen({
           isPill
         />
         <Button
-          key={ingredient.foodtype}
           title={`Food Type: ${ingredient.foodtype}`}
           onPress={() => {
             console.log("pill clicked");
@@ -50,7 +48,6 @@ export default function SingleResultScreen({
           isPill
         />
         <Button
-          key={ingredient.usedas}
           title={`Used As: ${ingredient.usedas}`}
           onPress={() => {
             console.log("pill clicked");
@@ -58,7 +55,6 @@ export default function SingleResultScreen({
           isPill
         />
         <Button
-          key={ingredient.allergens}
           title={`Allergens: ${ingredient.allergens}`}
           onPress={() => {
             console.log("pill clicked");

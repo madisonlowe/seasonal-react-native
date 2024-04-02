@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "src/navigation/screens/HomeScreen/HomeScreen";
 import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
 import SingleResultScreen from "./screens/SingleResultScreen/SingleResultScreen";
+import SearchResultsScreen from "./screens/SearchResultsScreen/SearchResultsScreen";
 
 import { RootStackParamList } from "src/router";
 import { Button } from "react-native";
@@ -45,6 +46,23 @@ export default function App() {
           initialParams={{ title: "Ingredient" }}
           options={({ route, navigation }) => ({
             title: route.params.title,
+            drawerItemStyle: { display: "none" },
+            headerRight: () => (
+              <Button
+                title="Back"
+                onPress={() => navigation.goBack()}
+                color="white"
+              />
+            ),
+          })}
+        />
+        <Drawer.Screen
+          name="SearchResults"
+          component={SearchResultsScreen}
+          initialParams={{ ingredients: [] }}
+          options={({ route, navigation }) => ({
+            title: "Results",
+            ingredients: route.params.ingredients,
             drawerItemStyle: { display: "none" },
             headerRight: () => (
               <Button
