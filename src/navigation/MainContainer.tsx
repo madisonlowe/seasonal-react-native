@@ -1,10 +1,13 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import HomeScreen from "src/navigation/screens/HomeScreen/HomeScreen";
 import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
 import SingleResultScreen from "./screens/SingleResultScreen/SingleResultScreen";
+
 import { RootStackParamList } from "src/router";
+import { Button } from "react-native";
 
 // RootStackParamList which contains all information about our routes.
 // We use together with NativeStackScreenProps to define route Props
@@ -40,9 +43,16 @@ export default function App() {
           name="SingleResultScreen"
           component={SingleResultScreen}
           initialParams={{ title: "Ingredient" }}
-          options={({ route }) => ({
+          options={({ route, navigation }) => ({
             title: route.params.title,
             drawerItemStyle: { display: "none" },
+            headerRight: () => (
+              <Button
+                title="Back"
+                onPress={() => navigation.goBack()}
+                color="white"
+              />
+            ),
           })}
         />
       </Drawer.Navigator>

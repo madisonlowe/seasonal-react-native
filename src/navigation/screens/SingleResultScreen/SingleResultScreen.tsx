@@ -72,7 +72,6 @@ export default function SingleResultScreen({
         resizeMode="center"
       />
       <Text style={styles.description}>{ingredient.description}</Text>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
     </ScrollView>
   );
 }
