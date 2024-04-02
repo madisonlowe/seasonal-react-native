@@ -21,7 +21,7 @@ export default function IngredientCard({
   children,
   imageUrl,
   onPress,
-}: IngredientCardProps) {
+}: Readonly<IngredientCardProps>) {
   return (
     <Pressable onPress={onPress} style={styles.card}>
       <Image

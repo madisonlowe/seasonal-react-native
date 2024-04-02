@@ -19,7 +19,7 @@ const cards = new Array(5).fill(null).map((v, i) => i + 1);
 const fetchString =
   "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
 
-export default function HomeScreen({ navigation }: properties) {
+export default function HomeScreen({ navigation }: Readonly<properties>) {
   const [randomArray, setRandomArray] = useState<any[]>([]);
   const [timeStamp, setTimeStamp] = useState("");
 
@@ -77,16 +77,6 @@ export default function HomeScreen({ navigation }: properties) {
         title="More in Season"
         onPress={() => console.log("clicking more in season")}
       />
-      {/* <Button title="About" onPress={() => navigation.navigate("About")} />
-      <Button
-        title="First Item"
-        onPress={() =>
-          navigation.navigate("SingleResultScreen", {
-            title: ingredient.name,
-            ingredient: ingredient,
-          })
-        }
-      /> */}
     </ScrollView>
   );
 }

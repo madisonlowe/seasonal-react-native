@@ -1,23 +1,20 @@
-import {
-  Platform,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-} from "react-native";
+import { Platform, StatusBar, StyleSheet, Text, Image } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../router";
 import Button from "src/components/Button/Button";
+import { ScrollView } from "react-native-gesture-handler";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SingleResultScreen">;
 
-export default function SingleResultScreen({ navigation, route }: Props) {
+export default function SingleResultScreen({
+  navigation,
+  route,
+}: Readonly<Props>) {
   const { ingredient } = route.params;
 
   return (
-    <View style={styles.container}>
-      <Text>{ingredient.name}</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.h1}>{ingredient.name}</Text>
       {/* pills for food types etc here */}
       <Image
         style={styles.image}
@@ -31,7 +28,7 @@ export default function SingleResultScreen({ navigation, route }: Props) {
       <Text>{ingredient.id}</Text>
       <Text>{ingredient.usedas}</Text>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -54,5 +51,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     flex: 3,
     backgroundColor: "#fff",
+  },
+  h1: {
+    fontWeight: "bold",
+    fontSize: 30,
   },
 });
