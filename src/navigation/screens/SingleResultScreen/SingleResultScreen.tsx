@@ -17,15 +17,15 @@ export default function SingleResultScreen({
   navigation,
   route,
 }: Readonly<Props>) {
-  const { ingredient } = route.params;
+  const { title, ingredient } = route.params;
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.h1}>{ingredient.name}</Text>
+      <Text style={styles.h1}>{title}</Text>
       <View style={styles.pills}>
-        {ingredient.month.map((month) => (
+        {ingredient.month.map((month, index) => (
           <Button
-            key={month}
+            key={index}
             title={month}
             onPress={() => {
               console.log("pill clicked");
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
+    paddingBottom: 60,
     ...Platform.select({
       ios: { paddingTop: 40 },
       android: { paddingTop: StatusBar.currentHeight },

@@ -1,21 +1,10 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  Dimensions,
-  Image,
-  Pressable,
-} from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "src/router";
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 
 interface IngredientCardProps {
   children: string;
   imageUrl: string;
   onPress: () => void;
 }
-
-type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
 export default function IngredientCard({
   children,
@@ -35,8 +24,6 @@ export default function IngredientCard({
     </Pressable>
   );
 }
-
-//const deviceWidth = Math.round(Dimensions.get("window").width);
 
 const styles = StyleSheet.create({
   card: {

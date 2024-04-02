@@ -14,14 +14,12 @@ import Button from "src/components/Button/Button";
 
 type properties = NativeStackScreenProps<RootStackParamList>;
 
-const cards = new Array(5).fill(null).map((v, i) => i + 1);
-
-const fetchString =
-  "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
-
 export default function HomeScreen({ navigation }: Readonly<properties>) {
   const [randomArray, setRandomArray] = useState<any[]>([]);
   const [timeStamp, setTimeStamp] = useState("");
+
+  const fetchString =
+    "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
 
   const fetchData = async () => {
     const data = await fetch(`${fetchString}?month=${timeStamp}`);
@@ -63,6 +61,7 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
               imageUrl={ingredient.imageurl}
               onPress={() =>
                 navigation.navigate("SingleResultScreen", {
+                  title: ingredient.name,
                   ingredient: ingredient,
                 })
               }

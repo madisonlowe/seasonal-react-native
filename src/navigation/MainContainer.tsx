@@ -17,15 +17,52 @@ const Drawer = createDrawerNavigator<RootStackParamList>();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="About" component={AboutScreen} />
+      <Drawer.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#296243",
+          },
+          headerTintColor: "#f2f2f2",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#296243",
+            },
+            headerTintColor: "#f2f2f2",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
+        <Drawer.Screen
+          name="About"
+          component={AboutScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#296243",
+            },
+            headerTintColor: "#f2f2f2",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
         <Drawer.Screen
           name="SingleResultScreen"
           component={SingleResultScreen}
-          options={{
+          initialParams={{ title: "Ingredient" }}
+          options={({ route }) => ({
+            title: route.params.title,
             drawerItemStyle: { display: "none" },
-          }}
+          })}
         />
       </Drawer.Navigator>
     </NavigationContainer>

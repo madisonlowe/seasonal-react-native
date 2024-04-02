@@ -4,6 +4,7 @@ export type RootStackParamList = {
   About: undefined;
   SearchResults: undefined; // should have params for routing with search???
   SingleResultScreen: {
+    title: string;
     ingredient: {
       id: number;
       name: string;
