@@ -20,6 +20,11 @@ export default function App() {
       <Drawer.Navigator
         initialRouteName="Home"
         screenOptions={{
+          drawerStyle: {
+            backgroundColor: "#e0ece2",
+          },
+          drawerActiveTintColor: "#296243",
+          drawerInactiveTintColor: "#1f1f1f",
           headerStyle: {
             backgroundColor: "#296243",
           },
@@ -29,32 +34,8 @@ export default function App() {
           },
         }}
       >
-        <Drawer.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: "#296243",
-            },
-            headerTintColor: "#f2f2f2",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
-        <Drawer.Screen
-          name="About"
-          component={AboutScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: "#296243",
-            },
-            headerTintColor: "#f2f2f2",
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          }}
-        />
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
         <Drawer.Screen
           name="SingleResultScreen"
           component={SingleResultScreen}
