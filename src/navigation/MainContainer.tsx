@@ -6,12 +6,6 @@ import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
 import SingleResultScreen from "./screens/SingleResultScreen/SingleResultScreen";
 import { RootStackParamList } from "src/router";
 
-import {
-  GestureDetector,
-  Gesture,
-  GestureHandlerRootView,
-} from "react-native-gesture-handler";
-
 // RootStackParamList which contains all information about our routes.
 // We use together with NativeStackScreenProps to define route Props
 

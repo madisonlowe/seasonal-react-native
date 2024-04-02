@@ -133,4 +133,10 @@ TO DO:
 
 - style the nav component and drawer
 - make the onPress move us to a new page (slug)
+
+onPress={() =>
+                navigation.navigate("SingleResultScreen", {
+                  ingredient: ingredient,
+                })
+              }
 */
