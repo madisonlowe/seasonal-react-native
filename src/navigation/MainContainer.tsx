@@ -1,14 +1,15 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Button } from "react-native";
 
 import HomeScreen from "src/navigation/screens/HomeScreen/HomeScreen";
 import AboutScreen from "src/navigation/screens/AboutScreen/AboutScreen";
+import CreditsScreen from "./screens/CreditsScreen/CreditsScreen";
 import SingleResultScreen from "./screens/SingleResultScreen/SingleResultScreen";
 import SearchResultsScreen from "./screens/SearchResultsScreen/SearchResultsScreen";
 
 import { RootStackParamList } from "src/router";
-import { Button } from "react-native";
 
 // RootStackParamList which contains all information about our routes.
 // We use together with NativeStackScreenProps to define route Props
@@ -40,6 +41,7 @@ export default function App() {
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="About" component={AboutScreen} />
+        <Drawer.Screen name="Credits" component={CreditsScreen} />
         <Drawer.Screen
           name="SingleResultScreen"
           component={SingleResultScreen}
