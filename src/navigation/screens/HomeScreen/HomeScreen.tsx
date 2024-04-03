@@ -6,10 +6,11 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import { useEffect, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Ingredient, RootStackParamList } from "src/router";
 import IngredientCard from "src/components/IngredientCard/IngredientCard";
-import { useEffect, useState } from "react";
+import TextInput from "src/components/TextInput/TextInput";
 import Button from "src/components/Button/Button";
 
 type properties = NativeStackScreenProps<RootStackParamList>;
@@ -21,22 +22,20 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
     []
   );
 
-  const fetchRandomString =
-    "https://drab-ruby-seahorse-veil.cyclic.app//produce/random";
-
+  const fetchRandomString = `https://drab-ruby-seahorse-veil.cyclic.app//produce/random?month=${timeStamp}`;
   const fetchMonthString = `https://drab-ruby-seahorse-veil.cyclic.app//produce?month=${timeStamp}`;
-
-  const fetchData = async () => {
-    const data = await fetch(`${fetchRandomString}?month=${timeStamp}`);
-    let result = await data.json();
-    setRandomArray(result.payload);
-  };
 
   function getMonth() {
     const today = new Date();
     let longMonth = today.toLocaleString("default", { month: "long" });
     setTimeStamp(longMonth);
   }
+
+  const fetchRandomData = async (string: string) => {
+    const data = await fetch(string);
+    let result = await data.json();
+    setRandomArray(result.payload);
+  };
 
   async function getInSeasonIngredients() {
     const data = await fetch(fetchMonthString);
@@ -50,7 +49,7 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
 
   useEffect(() => {
     if (timeStamp === "") return;
-    fetchData();
+    fetchRandomData(fetchRandomString);
     getInSeasonIngredients();
   }, [timeStamp]);
 
@@ -64,6 +63,8 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
         <Text style={styles.h1}>It's {timeStamp}!</Text>
         <Text style={styles.bold}>Some things in season...</Text>
       </View>
+
+      <TextInput navigation={navigation} route={route} />
 
       {randomArray && (
         <View style={styles.cards}>
