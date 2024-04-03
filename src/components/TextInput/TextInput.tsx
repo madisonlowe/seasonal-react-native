@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import {
@@ -7,12 +8,15 @@ import {
 } from "react-native";
 import { Ingredient, RootStackParamList } from "src/router";
 
-type Props = NativeStackScreenProps<RootStackParamList>;
-
-export default function TextInput({ navigation }: Props) {
-  // fix this typing
+export default function TextInput() {
   const [text, setText] = useState("");
   const [searchResults, setSearchResults] = useState<Ingredient[]>([]);
+
+  const navigation = useNavigation<any>();
+
+  // const navigation =
+  //   useNavigation<NativeStackScreenProps<RootStackParamList>>();
+  // FIX THIS TYPING
 
   const searchString = `https://drab-ruby-seahorse-veil.cyclic.app//produce?item=${text}`;
 

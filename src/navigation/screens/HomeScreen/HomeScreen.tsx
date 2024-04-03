@@ -64,7 +64,7 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
         <Text style={styles.bold}>Some things in season...</Text>
       </View>
 
-      <TextInput navigation={navigation} route={route} />
+      <TextInput />
 
       {randomArray && (
         <View style={styles.cards}>

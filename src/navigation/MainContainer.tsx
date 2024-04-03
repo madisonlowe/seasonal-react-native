@@ -11,12 +11,6 @@ import SearchResultsScreen from "./screens/SearchResultsScreen/SearchResultsScre
 
 import { RootStackParamList } from "src/router";
 
-// RootStackParamList which contains all information about our routes.
-// We use together with NativeStackScreenProps to define route Props
-
-//const Stack = createNativeStackNavigator<RootStackParamList>();
-// creates navigation. returns Screen and Navigator
-
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 export default function App() {
