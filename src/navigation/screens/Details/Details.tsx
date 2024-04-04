@@ -11,7 +11,7 @@ import { RootStackParamList } from "../../../router";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Details">;
 
-export default function Details({ navigation, route }: Props) {
+export default function Details({ navigation, route }: Readonly<Props>) {
   const { content, title } = route.params;
 
   return (
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     ...Platform.select({

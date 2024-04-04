@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Button } from "react-native";
 
@@ -13,9 +13,17 @@ import { RootStackParamList } from "src/router";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "ghostwhite",
+  },
+};
+
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Drawer.Navigator
         initialRouteName="Home"
         screenOptions={{

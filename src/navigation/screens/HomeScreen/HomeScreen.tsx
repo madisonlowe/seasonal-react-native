@@ -100,7 +100,6 @@ export default function HomeScreen({ navigation }: Readonly<properties>) {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 60,
-    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     ...Platform.select({

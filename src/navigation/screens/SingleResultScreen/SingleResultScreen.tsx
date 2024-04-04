@@ -7,9 +7,10 @@ import {
   View,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../../router";
+import { Ingredient, RootStackParamList } from "../../../router";
 import Button from "src/components/Button/Button";
 import { ScrollView } from "react-native-gesture-handler";
+import { useState } from "react";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SingleResultScreen">;
 
@@ -18,49 +19,41 @@ export default function SingleResultScreen({
   route,
 }: Readonly<Props>) {
   const { title, ingredient } = route.params;
+  const [inSeasonIngredients, setInSeasonIngredients] = useState<Ingredient[]>(
+    []
+  );
+
+  const fetchMonthString = `https://drab-ruby-seahorse-veil.cyclic.app//produce?month=`;
+
+  async function getInSeasonIngredients(month: string) {
+    const data = await fetch(fetchMonthString + month);
+    let result = await data.json();
+    setInSeasonIngredients(result.payload);
+  }
+
+  async function onPress(month: string) {
+    await getInSeasonIngredients(month);
+    navigation.navigate("SearchResults", {
+      ingredients: inSeasonIngredients,
+    });
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.h1}>{title}</Text>
       <View style={styles.pills}>
-        {ingredient.month.map((month, index) => (
+        {ingredient.month.map((month) => (
           <Button
-            key={index}
+            key={month}
             title={month}
-            onPress={() => {
-              console.log("pill clicked");
-            }}
+            onPress={() => onPress(month)}
             isPill
           />
         ))}
-        <Button
-          title={`Family: ${ingredient.allergens}`}
-          onPress={() => {
-            console.log("pill clicked");
-          }}
-          isPill
-        />
-        <Button
-          title={`Food Type: ${ingredient.foodtype}`}
-          onPress={() => {
-            console.log("pill clicked");
-          }}
-          isPill
-        />
-        <Button
-          title={`Used As: ${ingredient.usedas}`}
-          onPress={() => {
-            console.log("pill clicked");
-          }}
-          isPill
-        />
-        <Button
-          title={`Allergens: ${ingredient.allergens}`}
-          onPress={() => {
-            console.log("pill clicked");
-          }}
-          isPill
-        />
+        <Button title={`Family: ${ingredient.allergens}`} isPill />
+        <Button title={`Food Type: ${ingredient.foodtype}`} isPill />
+        <Button title={`Used As: ${ingredient.usedas}`} isPill />
+        <Button title={`Allergens: ${ingredient.allergens}`} isPill />
       </View>
       <Image
         style={styles.image}
@@ -74,7 +67,6 @@ export default function SingleResultScreen({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     padding: 30,

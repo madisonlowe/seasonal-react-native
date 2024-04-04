@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     ...Platform.select({

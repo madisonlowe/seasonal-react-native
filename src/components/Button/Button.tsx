@@ -2,7 +2,7 @@ import { Pressable, Text, StyleSheet } from "react-native";
 
 interface ButtonProps {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
   isPill?: boolean;
 }
 

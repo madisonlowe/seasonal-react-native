@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleSheet, Text, View } from "react-native";
+import { Platform, StatusBar, StyleSheet } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../../router";
 import IngredientCard from "src/components/IngredientCard/IngredientCard";
@@ -34,10 +34,8 @@ export default function SearchResultsScreen({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    backgroundColor: "ghostwhite",
     alignItems: "center",
     justifyContent: "center",
     paddingBottom: 60,

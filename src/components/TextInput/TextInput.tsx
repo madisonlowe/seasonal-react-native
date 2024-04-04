@@ -1,12 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
   TextInput as NativeTextInput,
 } from "react-native";
-import { Ingredient, RootStackParamList } from "src/router";
+import { Ingredient } from "src/router";
 
 export default function TextInput() {
   const [text, setText] = useState("");
@@ -50,11 +49,12 @@ export default function TextInput() {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    width: 200,
+    width: 300,
     backgroundColor: "#fff",
     margin: 12,
     borderWidth: 1,
     borderRadius: 4,
+    borderColor: "#296243",
     padding: 10,
   },
 });
