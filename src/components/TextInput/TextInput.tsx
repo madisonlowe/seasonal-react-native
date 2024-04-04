@@ -12,10 +12,10 @@ export default function TextInput() {
   const [searchResults, setSearchResults] = useState<Ingredient[]>([]);
 
   const navigation = useNavigation<any>();
+  // FIX THIS TYPING
 
   // const navigation =
   //   useNavigation<NativeStackScreenProps<RootStackParamList>>();
-  // FIX THIS TYPING
 
   const searchString = `https://drab-ruby-seahorse-veil.cyclic.app//produce?item=${text}`;
 

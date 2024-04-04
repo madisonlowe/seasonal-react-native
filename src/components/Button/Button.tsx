@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   pill: {
     height: 24,
     paddingHorizontal: 12,
-    backgroundColor: "#296243",
+    backgroundColor: "#438920",
     borderRadius: 4,
   },
   pillText: {

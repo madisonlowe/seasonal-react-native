@@ -50,10 +50,6 @@ export default function SingleResultScreen({
             isPill
           />
         ))}
-        <Button title={`Family: ${ingredient.allergens}`} isPill />
-        <Button title={`Food Type: ${ingredient.foodtype}`} isPill />
-        <Button title={`Used As: ${ingredient.usedas}`} isPill />
-        <Button title={`Allergens: ${ingredient.allergens}`} isPill />
       </View>
       <Image
         style={styles.image}
@@ -61,6 +57,12 @@ export default function SingleResultScreen({
         resizeMode="center"
       />
       <Text style={styles.description}>{ingredient.description}</Text>
+      <View style={styles.pills}>
+        <Text style={styles.bold}>{`Family: ${ingredient.allergens}`}</Text>
+        <Text style={styles.bold}>{`Food Type: ${ingredient.foodtype}`}</Text>
+        <Text style={styles.bold}>{`Used As: ${ingredient.usedas}`}</Text>
+        <Text style={styles.bold}>{`Allergens: ${ingredient.allergens}`}</Text>
+      </View>
     </ScrollView>
   );
 }
@@ -100,5 +102,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     fontSize: 16,
     lineHeight: 26,
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
